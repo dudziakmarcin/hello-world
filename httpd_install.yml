@@ -1,0 +1,33 @@
+---
+- name: Instalacja servera www
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: instalacja pakietu httpd
+      yum: pkg=httpd state=latest
+    - name: kopiowanie pliku konfiguracyjnego httpd.conf
+      copy:
+           src: /home/marcin/httpd.conf
+           dest: /etc/httpd/conf/httpd.conf
+      notify:
+      - restart httpd
+    - name: wystartowanie i wlaczenie uslugi httpd
+      service: name=httpd state=started enabled=yes
+    - name: otworzenie portow
+      firewalld:
+        port: 81/tcp
+        state: enabled
+        permanent: true
+      notify:
+      - restart firewalld
+    - name: umieszczenie plikow strony www na serwerze
+      copy:
+           src: /home/marcin/index.html
+           dest: /var/www/html/index.html
+
+  handlers:
+  - name: restart httpd
+    service: name=httpd state=restarted
+  - name: restart firewalld
+    service: name=firewalld state=restarted
