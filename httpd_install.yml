@@ -1,7 +1,6 @@
 ---
 - name: Instalacja servera www
   hosts: webservers
-  become: true
 
   tasks:
     - name: instalacja pakietu httpd
