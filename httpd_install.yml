@@ -21,7 +21,7 @@
       - restart firewalld
     - name: umieszczenie plikow strony www na serwerze
       copy:
-           src: /home/marcin/index.html
+           src: /opt/index.html
            dest: /var/www/html/index.html
 
   handlers:
