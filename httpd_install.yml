@@ -6,7 +6,7 @@
       yum: pkg=httpd state=latest
     - name: kopiowanie pliku konfiguracyjnego httpd.conf
       copy:
-           src: /root/httpd.conf
+           src: /opt/httpd.conf
            dest: /etc/httpd/conf/httpd.conf
       notify:
       - restart httpd
