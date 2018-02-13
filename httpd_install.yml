@@ -1,6 +1,6 @@
 ---
 - name: Instalacja servera www
-  hosts: webservers
+
 
   tasks:
     - name: instalacja pakietu httpd
