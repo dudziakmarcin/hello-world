@@ -1,6 +1,6 @@
 ---
 - name: Instalacja servera www
-
+  hosts: all
   tasks:
     - name: instalacja pakietu httpd
       yum: pkg=httpd state=latest
