@@ -6,7 +6,7 @@
       yum: pkg=httpd state=latest
     - name: kopiowanie pliku konfiguracyjnego httpd.conf
       copy:
-           src: /opt/httpd.conf
+           src: httpd.conf
            dest: /etc/httpd/conf/httpd.conf
       notify:
       - restart httpd
@@ -21,7 +21,7 @@
       - restart firewalld
     - name: umieszczenie plikow strony www na serwerze
       copy:
-           src: /opt/index.html
+           src: index.html
            dest: /var/www/html/index.html
 
   handlers:
